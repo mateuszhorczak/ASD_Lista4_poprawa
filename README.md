@@ -1,6 +1,6 @@
 # ASD_Lista4
 
-Program napisany w jezyku Python w wersji 3.10.8 na systemie linux w dystrybucji arch
+Program napisany w jezyku Python w wersji 3.10.9 na systemie linux
 
 
 
@@ -14,6 +14,9 @@ convertToBinFromTxt.py - dodatkowy program mający na celu wygenerowanie pliku b
 
 person.txt - dane do programu zawarte w pliku tekstowym potrzebne do convertToBinFromTxt.py w razie awarii oraz do "podejrzenia" danych.
 
+hashmap.py - zaimplementowana hashmapa
+
+tester.py - avlka na liczbach a nie na nodach do testow
 
 
 Treść zadania:
