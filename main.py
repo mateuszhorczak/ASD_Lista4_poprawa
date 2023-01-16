@@ -96,7 +96,7 @@ class AVLTree:
         
         if temp_node.parent is not None:
             if temp_node.balance_status == temp_node.parent.right.balance_status and \
-                    node.left is None and double_rotate == 1:  # TODO HAHA
+                    node.left is None and double_rotate == 1:
                 temp_node.parent.balance_status += 1
         
         node.balance_status -= (min(0, temp_node.balance_status) - 1)
@@ -122,8 +122,8 @@ class AVLTree:
         
         if temp_node.parent is not None:
             if temp_node.balance_status == temp_node.parent.left.balance_status and \
-                    node.right is None and double_rotate == 1:  # TODO HAHA
-                temp_node.parent.balance_status -= 1
+                    node.right is None and double_rotate == 1:
+                temp_node.parent.balance_status += 1
         
         node.balance_status -= (max(0, temp_node.balance_status) + 1)
         temp_node.balance_status += (min(0, node.balance_status) - 1)
@@ -131,7 +131,7 @@ class AVLTree:
     def deleteNode(self, surname, name, address):
         self.delete(self.root, surname, name, address)
 
-    def delete(self, node, surname, name, address):  # TODO wyjebac cale delete, skopiowac z searcha i przerobic bo to pojebane
+    def delete(self, node, surname, name, address):
         if node is None:
             print("Nie ma takiego abonenta w ksiazce")
             return node
@@ -152,7 +152,7 @@ class AVLTree:
                     print("Usunieto ostatni element ksiazki")
                     return
                 if node.parent.left == node:
-                    node.parent.balance_status += 1  # TODO check
+                    node.parent.balance_status += 1
                     node.parent.left = None
                 elif node.parent.right == node:
                     node.parent.balance_status -= 1
@@ -208,9 +208,9 @@ class AVLTree:
                 self.delete(node.right, temp_node.surname, temp_node.name, temp_node.address)  # usuwa zbedny element
 
             while node.parent is not None:
-                if node.parent.right == node and node.balance_status == 0:  # TODO check
+                if node.parent.right == node and node.balance_status == 0:
                     node.parent.balance_status -= 1
-                if node.parent.left == node and node.balance_status == 0:  # TODO check
+                if node.parent.left == node and node.balance_status == 0:
                     node.parent.balance_status += 1
                 node = node.parent
                 if node.balance_status > 1 or node.balance_status < -1:
@@ -319,7 +319,6 @@ def switch_choice(num):
 if __name__ == '__main__':
     phone_book = AVLTree()
     while True:
-        # phone_book.show(phone_book.getRoot())
         print("Co chcesz zrobic?")
         print(" 1 - Wstawic nowego abonenta \n 2 - Usunac abonenta \n 3 - Wyszukac numer(y) abonenta \n "
               "4 - zapis danych do pliku \n 5 - wczytac dane z pliku \n 6 - wyjsc")

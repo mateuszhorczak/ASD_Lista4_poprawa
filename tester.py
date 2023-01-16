@@ -52,16 +52,16 @@ class AVLTree:
 
     def balanceTree(self, node):
         if node.balance_status > 1:
-            if node.right.balance_status > 0:  # Left Rotation TODO check
+            if node.right.balance_status > 0:  # Left Rotation
                 self.leftRotate(node, 0)
-            else:  # Left Right Rotation TODO check
+            else:  # Left Right Rotation
                 self.rightRotate(node.right, 1)
                 # node.balance_status -= 1
                 self.leftRotate(node, 0)
         else:
-            if node.left.balance_status < 0:  # Right Rotation TODO check
+            if node.left.balance_status < 0:  # Right Rotation
                 self.rightRotate(node, 0)
-            else:  # Right Left Rotation TODO check
+            else:  # Right Left Rotation
                 self.leftRotate(node.left, 1)
                 self.rightRotate(node, 0)
 
@@ -88,7 +88,7 @@ class AVLTree:
 
         if temp_node.parent is not None:
             if temp_node.balance_status == temp_node.parent.right.balance_status and \
-                    node.left is None and double_rotate == 1:  # TODO HAHA
+                    node.left is None and double_rotate == 1:
                 temp_node.parent.balance_status += 1
         
         node.balance_status -= (min(0, temp_node.balance_status) - 1)
@@ -114,7 +114,7 @@ class AVLTree:
 
         if temp_node.parent is not None:
             if temp_node.balance_status == temp_node.parent.left.balance_status and \
-                    node.right is None and double_rotate == 1:  # TODO HAHA
+                    node.right is None and double_rotate == 1:
                 temp_node.parent.balance_status -= 1
 
         node.balance_status -= (max(0, temp_node.balance_status) + 1)
@@ -140,7 +140,7 @@ class AVLTree:
                     print("Usunieto ostatni element ksiazki")
                     return
                 if node.parent.left == node:
-                    node.parent.balance_status += 1     # TODO check
+                    node.parent.balance_status += 1
                     node.parent.left = None
                 elif node.parent.right == node:
                     node.parent.balance_status -= 1
@@ -161,17 +161,14 @@ class AVLTree:
                 if temp_node.parent.right == temp_node:
                     temp_node.parent.right = node
                     node.parent = node.parent.parent
-                    # print("usunieto osobe")
                 else:
                     temp_node.parent.left = node
                     node.parent = node.parent.parent
-                    # print("Usunieto osobe")
                 print("Usunieto osobe")
 
             elif node.left is None:  # wezel gdy ma tylko prawe dziecko
                 temp_node = node
                 node = node.right
-                # node.parent = temp_node.parent
                 if temp_node.parent is None:    # temp_node jest rootem
                     temp_node.value = node.value
                     temp_node.balance_status = node.balance_status
@@ -194,14 +191,13 @@ class AVLTree:
                 self.delete(node.right, temp_node.value)  # usuwa zbedny element
 
             while node.parent is not None:
-                if node.parent.right == node and node.balance_status == 0:   # TODO check
+                if node.parent.right == node and node.balance_status == 0:
                     node.parent.balance_status -= 1
-                if node.parent.left == node and node.balance_status == 0:    # TODO check
+                if node.parent.left == node and node.balance_status == 0:
                     node.parent.balance_status += 1
                 node = node.parent
                 if node.balance_status > 1 or node.balance_status < -1:
                     self.balanceTree(node)
-                print("orzeszki")
                 return
 
     def getMinFromRight(self, node):
@@ -229,7 +225,6 @@ class AVLTree:
 
 
 if __name__ == '__main__':
-    # print("psst")
     tree = AVLTree()
     # tree.insertNode(10)
     tree.insertNode(12)
@@ -245,7 +240,6 @@ if __name__ == '__main__':
     tree.insertNode(6)
     tree.insertNode(25)
     tree.insertNode(3)
-    print("dupa")
 
     # tree.insertNode(20)
     # tree.insertNode(30)
